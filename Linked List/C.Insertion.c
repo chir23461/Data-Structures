@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node
+typedef struct Node
 {
     int data;
     struct Node *next;
-};
-struct Node *create_Node_In_Linked_list(struct Node *head, int index)
+} Node;
+Node *create_Node_In_Linked_list(Node *head, int index)
 {
     int data;
     printf("Enter the data of Linked list: \t");
     scanf("%d", &data);
-    struct Node *p = (struct Node *)malloc(sizeof(struct Node));
+    Node *p = (struct Node *)malloc(sizeof(Node));
     p->data = data;
     p->next = NULL;
-    struct Node *ptr;
+    Node *ptr;
     if (head == NULL)
     {
         head = p;
@@ -28,9 +28,9 @@ struct Node *create_Node_In_Linked_list(struct Node *head, int index)
         return head;
     }
 }
-void print_Linked_list(struct Node *head)
+void print_Linked_list(Node *head)
 {
-    struct Node *p = head;
+    Node *p = head;
     while (p != NULL)
     {
         printf("Element is: %d\t\n", p->data);
@@ -39,9 +39,9 @@ void print_Linked_list(struct Node *head)
 }
 // case 1: (1) Insert at the beginning.
 //         (2) Time complexity : O(1).
-struct Node *insertionAtFirst(struct Node *head, int data)
+Node *insertionAtFirst(Node *head, int data)
 {
-    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    Node *ptr = (Node *)malloc(sizeof(Node));
     ptr->data = data;
     ptr->next = head;
     head = ptr;
@@ -50,10 +50,10 @@ struct Node *insertionAtFirst(struct Node *head, int data)
 }
 // case 2: (1) Insert node at between a linked list.
 //         (2) Time complexity : O(n).
-struct Node *insertionAtIndex(struct Node *head, int data, int index)
+Node *insertionAtIndex(Node *head, int data, int index)
 {
-    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
-    struct Node *p = head;
+    Node *ptr = (Node *)malloc(sizeof(Node));
+    Node *p = head;
     int i = 1;
     while (i < index)
     {
@@ -67,10 +67,10 @@ struct Node *insertionAtIndex(struct Node *head, int data, int index)
 }
 // case 3: (1) Insert node at the end.
 //         (2) Time Complexity : O(n).
-struct Node *Insert_at_the_end(struct Node *head, int data)
+Node *Insert_at_the_end(Node *head, int data)
 {
-    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
-    struct Node *p = head;
+    Node *ptr = (Node *)malloc(sizeof(Node));
+    Node *p = head;
     while (p->next != NULL)
     {
         p = p->next;
@@ -89,13 +89,13 @@ int main()
     scanf("%d", &Info);
     printf("Enter a number of nodes in linked list : \t");
     scanf("%d", &n);
-    struct Node *head = NULL;
+    Node *head = NULL;
 
     for (i = 0; i < n; i++)
     {
         head = create_Node_In_Linked_list(head, B);
     }
-    //head = insertionAtFirst(head, Info);
+    // head = insertionAtFirst(head, Info);
     if (B < n)
     {
         head = insertionAtIndex(head, Info, B);
@@ -104,7 +104,7 @@ int main()
     {
         printf("element is not insert between them");
     }
-    //head = Insert_at_the_end(head, Info);
+    // head = Insert_at_the_end(head, Info);
     print_Linked_list(head);
     return 0;
 }

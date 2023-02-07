@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node
+typedef struct Node
 {
     int data;
     struct Node *next;
-};
-struct Node *create_Node_In_Linked_list(struct Node *head)
+} Node;
+Node *create_Node_In_Linked_list(Node *head)
 {
     int data;
     printf("Enter the data of Linked list: \t");
     scanf("%d", &data);
-    struct Node *p = (struct Node *)malloc(sizeof(struct Node));
+    Node *p = (Node *)malloc(sizeof(Node));
     p->data = data;
     p->next = NULL;
-    struct Node *ptr;
+    Node *ptr;
     if (head == NULL)
     {
         head = p;
@@ -28,13 +28,13 @@ struct Node *create_Node_In_Linked_list(struct Node *head)
         return head;
     }
 }
-void print_Linked_list(struct Node *head)
+void print_Linked_list(Node *head)
 {
-    struct Node *p = head;
+    Node *p = head;
     while (p != NULL)
     {
-        printf("Element is: %d\t\n",p->data);
-        p=p->next;
+        printf("Element is: %d\t\n", p->data);
+        p = p->next;
     }
 }
 
@@ -43,7 +43,7 @@ int main()
     int n, i;
     printf("Enter a number of nodes in linked list : \t");
     scanf("%d", &n);
-    struct Node *head = NULL;
+    Node *head = NULL;
     for (i = 0; i < n; i++)
     {
         head = create_Node_In_Linked_list(head);
